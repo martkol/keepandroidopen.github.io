@@ -47,6 +47,12 @@ function mastodonDraftUrl(orgName: string, mastodonUrl: string): string {
   const text = `Thank you ${handle} for supporting Keep Android Open @keepandroidopen@techhub.social #keepandroidopen`;
   return `${url.origin}/share?text=${encodeURIComponent(text)}`;
 }
+
+function linkedinDraftUrl(orgName: string, linkedinUrl: string): string {
+  const handle = '@' + linkedinUrl.split('/').pop();
+  const text = `Thank you ${handle} for supporting Keep Android Open @keepandroidopen #keepandroidopen`;
+  return `https://www.linkedin.com/sharing/share-offsite/?text=${encodeURIComponent(text)}`;
+}
 ---
 <Letter {...data}>
   <article class="prose dark:prose-invert">
@@ -65,6 +71,7 @@ function mastodonDraftUrl(orgName: string, mastodonUrl: string): string {
                 {sig["social-mastodon"] && <a class="sig-social" target="_blank" href={mastodonDraftUrl(sig.organization, sig["social-mastodon"])} title="Thank this organization on Mastodon"><span class="social-icon icon-mastodon" style="width:14px;height:14px"></span></a>}
                 {sig["social-bluesky"] && <a class="sig-social" target="_blank" href={bskyDraftUrl(sig.organization, sig["social-bluesky"])} title="Thank this organization on BlueSky"><span class="social-icon icon-bluesky" style="width:14px;height:14px"></span></a>}
                 {sig["social-x"] && <a class="sig-social" target="_blank" href={xDraftUrl(sig.organization, sig["social-x"])} title="Thank this organization on X"><span class="social-icon icon-x" style="width:14px;height:14px"></span></a>}
+                {sig["social-linkedin"] && <a class="sig-social" target="_blank" href={linkedinDraftUrl(sig.organization, sig["social-linkedin"])} title="Thank this organization on LinkedIn"><span class="social-icon icon-linkedin" style="width:14px;height:14px"></span></a>}
               </span>
             </div>
           </li>
